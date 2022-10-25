@@ -8,6 +8,9 @@
 .lexend {
   font-family: "Lexend Deca", sans-serif;
 }
+.my-shadow {
+  box-shadow: 0 30px 80px 0 rgb(55 84 170 / 10%);
+}
 
 .App-logo {
   height: 40vmin;

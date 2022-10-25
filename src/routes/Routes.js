@@ -1,4 +1,5 @@
 import Blog from "../Components/Pages/Blog";
+import CourseDetails from "../Components/Pages/CourseDetails";
 import Courses from "../Components/Pages/Courses";
 import FAQ from "../Components/Pages/FAQ";
 
@@ -26,6 +27,19 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses></Courses>,
+        loader: () =>
+          fetch(
+            `https://learning-platform-server-side-ariyanshihab.vercel.app/courses`
+          ),
+      },
+      {
+        path: "/courses/:id",
+        element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) => {
+          return fetch(
+            `https://learning-platform-server-side-ariyanshihab.vercel.app/courses/${params.id}`
+          );
+        },
       },
     ],
   },
