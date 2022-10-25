@@ -47,6 +47,16 @@ const Navber = () => {
           </li>
           <li>
             <Link
+              to="/login"
+              aria-label="Login"
+              title="Login"
+              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            >
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/faq"
               aria-label="FAQ"
               title="FAQ"

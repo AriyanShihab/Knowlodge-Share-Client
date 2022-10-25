@@ -2,6 +2,8 @@ import Blog from "../Components/Pages/Blog";
 import CourseDetails from "../Components/Pages/CourseDetails";
 import Courses from "../Components/Pages/Courses";
 import FAQ from "../Components/Pages/FAQ";
+import Login from "../Components/Pages/Login";
+import SignUp from "../Components/Pages/SignUp";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Components/Pages/Home");
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FAQ></FAQ>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>,
       },
       {
         path: "/courses",
