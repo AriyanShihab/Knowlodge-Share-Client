@@ -1,9 +1,18 @@
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import PDFFile from "./PDFFile";
 
 const CourseDetails = () => {
   const course = useLoaderData();
   const { name, description, rattings, student, totalHours, image } = course;
+
+  // const CoursePDF = () => (
+  //   <div>
+
+  //   </div>
+  // );
+
   return (
     <div className="bg-slate-900 grid items-center min-h-screen p-5">
       <div className="md:w-3/4 mx-auto bg-slate-800 px-4 py-20">
@@ -21,9 +30,23 @@ const CourseDetails = () => {
             </div>
           </div>
         </div>
-        <button className=" min-w-full mx-auto bg-green-500 rounded py-3 font-bold">
-          Download PDF
-        </button>
+        <PDFDownloadLink
+          document={<PDFFile course={course} />}
+          fileName="somename.pdf"
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? (
+              <button className="min-w-full bg-green-500 py-3 rounded font-bold text-slate-800">
+                PDF is Loadeing
+              </button>
+            ) : (
+              <button className="min-w-full bg-green-500 py-3 rounded font-bold text-slate-800">
+                Dounload PDF
+              </button>
+            )
+          }
+        </PDFDownloadLink>
+        ;
       </div>
     </div>
   );
