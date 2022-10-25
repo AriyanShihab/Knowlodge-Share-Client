@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { userContext } from "../Context/AuthContext";
+import React from "react";
 
 const Footer = () => {
-  const { name } = useContext(userContext);
   return (
-    <div className="py-20 bg-slate-800 text-center text-green-500 text-xl">
-      <h1>Hello {name}</h1>
+    <div className="py-4 bg-slate-800 text-center text-green-500 text-xl">
+      <h1>Hello Shihab</h1>
     </div>
   );
 };

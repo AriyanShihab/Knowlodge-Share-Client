@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { userContext } from "../../Context/AuthContext";
 
 const SignUp = () => {
+  const { signUpwithEmailPassword, updateUserProfile } =
+    useContext(userContext);
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fullName = form.fullName.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoUrl = form.photoUrl.value;
+
+    signUpwithEmailPassword(email, password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success("User Created Successfully", { autoClose: 700 });
+      })
+      .then(() => {
+        updateUserProfile(fullName, photoUrl);
+        toast.success("Profile update Successfully", { autoClose: 700 });
+      });
+  };
   return (
     <div className="bg-slate-900">
       <section className=" bg-gray-900">
@@ -11,17 +33,21 @@ const SignUp = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl text-green-500">
                 Create and account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form
+                onSubmit={(e) => handelSubmit(e)}
+                className="space-y-4 md:space-y-6"
+                action="#"
+              >
                 <div>
                   <label
-                    for="userNamel"
+                    htmlFor="userNamel"
                     className="block mb-2 text-sm font-medium  text-white"
                   >
                     Full Name
                   </label>
                   <input
                     type="userName"
-                    name="userName"
+                    name="fullName"
                     id="userName"
                     className=" border   sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Full Name"
@@ -30,7 +56,7 @@ const SignUp = () => {
                 </div>
                 <div>
                   <label
-                    for="email"
+                    htmlhtmlFor="email"
                     className="block mb-2 text-sm font-medium  text-white"
                   >
                     Your email
@@ -46,7 +72,22 @@ const SignUp = () => {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium  text-white"
+                  >
+                    Photo Url
+                  </label>
+                  <input
+                    type="text"
+                    name="photoUrl"
+                    className=" border   sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="something.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium  text-white"
                   >
                     Password
