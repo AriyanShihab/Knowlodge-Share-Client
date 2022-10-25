@@ -1,11 +1,13 @@
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { FaRegFilePdf } from "react-icons/fa";
+import { Link, useLoaderData } from "react-router-dom";
 import PDFFile from "./PDFFile";
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  const { name, description, rattings, student, totalHours, image } = course;
+  const { id, name, description, rattings, student, totalHours, image } =
+    course;
 
   return (
     <div className="bg-slate-900 grid items-center min-h-screen p-5">
@@ -22,25 +24,33 @@ const CourseDetails = () => {
               <p>ratting: {rattings}</p>
               <p>Time {totalHours} hours</p>
             </div>
+            <PDFDownloadLink
+              document={<PDFFile course={course} />}
+              fileName="CourseDetails.pdf"
+            >
+              {({ blob, url, loading, error }) =>
+                loading ? (
+                  <button className="min-w-full bg-green-500 py-2 m-1 rounded font-bold text-slate-800">
+                    <FaRegFilePdf className="inline mr-2 text-xl"></FaRegFilePdf>{" "}
+                    PDF is Loadeing
+                  </button>
+                ) : (
+                  <button className="min-w-full bg-indigo-500 py-2 m-1 rounded font-bold text-slate-800">
+                    <FaRegFilePdf className="inline mr-2 text-xl"></FaRegFilePdf>{" "}
+                    Download PDF
+                  </button>
+                )
+              }
+            </PDFDownloadLink>
           </div>
         </div>
-        <PDFDownloadLink
-          document={<PDFFile course={course} />}
-          fileName="somename.pdf"
+
+        <Link
+          to={`/courses/checkout/${id}`}
+          className="min-w-full block text-center mt-2 bg-green-500 py-3 rounded font-bold text-slate-800"
         >
-          {({ blob, url, loading, error }) =>
-            loading ? (
-              <button className="min-w-full bg-green-500 py-3 rounded font-bold text-slate-800">
-                PDF is Loadeing
-              </button>
-            ) : (
-              <button className="min-w-full bg-green-500 py-3 rounded font-bold text-slate-800">
-                Download PDF
-              </button>
-            )
-          }
-        </PDFDownloadLink>
-        ;
+          Check Out
+        </Link>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import Blog from "../Components/Pages/Blog";
+import CourseCheckOut from "../Components/Pages/CourseCheckOut";
 import CourseDetails from "../Components/Pages/CourseDetails";
 import Courses from "../Components/Pages/Courses";
 import FAQ from "../Components/Pages/FAQ";
@@ -45,6 +46,15 @@ const router = createBrowserRouter([
       {
         path: "/courses/:id",
         element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) => {
+          return fetch(
+            `https://learning-platform-server-side-ariyanshihab.vercel.app/courses/${params.id}`
+          );
+        },
+      },
+      {
+        path: "/courses/checkout/:id",
+        element: <CourseCheckOut></CourseCheckOut>,
         loader: ({ params }) => {
           return fetch(
             `https://learning-platform-server-side-ariyanshihab.vercel.app/courses/${params.id}`
