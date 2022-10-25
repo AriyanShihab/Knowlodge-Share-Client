@@ -7,12 +7,6 @@ const CourseDetails = () => {
   const course = useLoaderData();
   const { name, description, rattings, student, totalHours, image } = course;
 
-  // const CoursePDF = () => (
-  //   <div>
-
-  //   </div>
-  // );
-
   return (
     <div className="bg-slate-900 grid items-center min-h-screen p-5">
       <div className="md:w-3/4 mx-auto bg-slate-800 px-4 py-20">
@@ -41,7 +35,7 @@ const CourseDetails = () => {
               </button>
             ) : (
               <button className="min-w-full bg-green-500 py-3 rounded font-bold text-slate-800">
-                Dounload PDF
+                Download PDF
               </button>
             )
           }
