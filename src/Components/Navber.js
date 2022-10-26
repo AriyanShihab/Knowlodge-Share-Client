@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import ReactTooltip from "react-tooltip";
@@ -6,6 +7,7 @@ import { userContext } from "../Context/AuthContext";
 import dummyUser from "./dummyUser.jpg";
 
 const Navber = () => {
+  const [theme, setTheme] = useState(true);
   const { signout, user } = useContext(userContext);
   const logout = () => {
     signout()
@@ -39,6 +41,11 @@ const Navber = () => {
           </span>
         </Link>
         <ul className="flex items-center hidden space-x-8 lg:flex">
+          <li>
+            <p onClick={() => setTheme(!theme)}>
+              {theme ? <FaMoon></FaMoon> : <FaSun></FaSun>}
+            </p>
+          </li>
           <li>
             <Link
               to="/"
