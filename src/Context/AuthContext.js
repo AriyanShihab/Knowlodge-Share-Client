@@ -1,6 +1,9 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
   updateProfile,
 } from "firebase/auth";
 import React, { createContext } from "react";
@@ -21,9 +24,24 @@ const AuthContext = ({ children }) => {
     });
   };
 
+  // sign up using google
+  const googleProvider = new GoogleAuthProvider();
+  // sign up useig github
+  const githubProvider = new GithubAuthProvider();
+
+  const singUpwithGooglePopup = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  const signupWithGithub = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
   const userMethodes = {
     signUpwithEmailPassword,
     updateUserProfile,
+    singUpwithGooglePopup,
+    signupWithGithub,
   };
   return (
     <userContext.Provider value={userMethodes}>{children}</userContext.Provider>
