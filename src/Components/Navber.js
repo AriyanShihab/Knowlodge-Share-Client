@@ -1,7 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import ReactTooltip from "react-tooltip";
+import { userContext } from "../Context/AuthContext";
+import dummyUser from "./dummyUser.jpg";
 
 const Navber = () => {
+  const { signout, user } = useContext(userContext);
+  const logout = () => {
+    signout()
+      .then(() => {
+        toast.warning("logged out", { autoClose: 700 });
+      })
+      .catch((err) => {
+        toast.error(err.message, { autoClose: 800 });
+      });
+  };
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 shadow-lg">
@@ -45,16 +59,7 @@ const Navber = () => {
               Blog
             </Link>
           </li>
-          <li>
-            <Link
-              to="/login"
-              aria-label="Login"
-              title="Login"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              Login
-            </Link>
-          </li>
+
           <li>
             <Link
               to="/faq"
@@ -75,6 +80,55 @@ const Navber = () => {
               Courses
             </Link>
           </li>
+          {user && user.uid ? (
+            <>
+              <li>
+                <button
+                  onClick={logout}
+                  className="font-medium tracking-wide px-3 py-2 rounded bg-[#f66962] text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Log Out
+                </button>
+              </li>
+              <li></li>
+
+              <li>
+                <div data-tip="msg to show" data-for="toolTip1">
+                  <img
+                    className="h-[30px] w-[30px] rounded-[50%] object-cover"
+                    src={user.photoURL ? user.photoURL : dummyUser}
+                    alt=""
+                  />
+                </div>
+                <ReactTooltip place="bottom, center" id="toolTip1">
+                  {user.displayName}
+                </ReactTooltip>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link
+                  to="/login"
+                  aria-label="Login"
+                  title="Login"
+                  className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/signup"
+                  aria-label="signup"
+                  title="signup"
+                  className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Sign Up
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
         <div className="lg:hidden">
           <button

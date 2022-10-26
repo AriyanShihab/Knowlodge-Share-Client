@@ -30,7 +30,7 @@ const CourseDetails = () => {
             >
               {({ blob, url, loading, error }) =>
                 loading ? (
-                  <button className="min-w-full bg-green-500 py-2 m-1 rounded font-bold text-slate-800">
+                  <button className="min-w-full bg-[#f66962] py-2 m-1 rounded font-bold text-slate-800">
                     <FaRegFilePdf className="inline mr-2 text-xl"></FaRegFilePdf>{" "}
                     PDF is Loadeing
                   </button>
@@ -47,7 +47,7 @@ const CourseDetails = () => {
 
         <Link
           to={`/courses/checkout/${id}`}
-          className="min-w-full block text-center mt-2 bg-green-500 py-3 rounded font-bold text-slate-800"
+          className="min-w-full block text-center mt-2 bg-[#f66962] py-3 rounded font-bold text-slate-800"
         >
           Check Out
         </Link>

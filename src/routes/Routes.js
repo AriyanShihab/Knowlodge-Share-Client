@@ -5,6 +5,7 @@ import Courses from "../Components/Pages/Courses";
 import FAQ from "../Components/Pages/FAQ";
 import Login from "../Components/Pages/Login";
 import SignUp from "../Components/Pages/SignUp";
+import PrivateRoute from "./PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Components/Pages/Home");
@@ -54,7 +55,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/courses/checkout/:id",
-        element: <CourseCheckOut></CourseCheckOut>,
+        element: (
+          <PrivateRoute>
+            <CourseCheckOut></CourseCheckOut>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           return fetch(
             `https://learning-platform-server-side-ariyanshihab.vercel.app/courses/${params.id}`

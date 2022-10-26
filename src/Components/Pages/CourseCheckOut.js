@@ -20,7 +20,7 @@ const CourseCheckOut = () => {
               <img className="min-w-full rounded" src={image} alt="" />
             </div>
             <div className="md:col-span-2 text-slate-100">
-              <h1 className="text-3xl my-3  font-bold text-green-500">
+              <h1 className="text-3xl my-3  font-bold text-[#f66962]">
                 {name}
               </h1>
               <p>{description}</p>
@@ -30,7 +30,7 @@ const CourseCheckOut = () => {
                 <p>Time {totalHours} hours</p>
               </div>
               <button
-                className="p-3 bg-green-500 text-slate-900 font-bold rounded m-2"
+                className="p-3 bg-[#f66962] text-slate-900 font-bold rounded m-2"
                 onClick={handelOrder}
               >
                 {buttonText}
