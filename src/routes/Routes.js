@@ -4,6 +4,7 @@ import CourseDetails from "../Components/Pages/CourseDetails";
 import Courses from "../Components/Pages/Courses";
 import FAQ from "../Components/Pages/FAQ";
 import Login from "../Components/Pages/Login";
+import NotFound from "../Components/Pages/NotFound";
 import SignUp from "../Components/Pages/SignUp";
 import PrivateRoute from "./PrivateRoutes";
 
@@ -66,7 +67,12 @@ const router = createBrowserRouter([
           );
         },
       },
+      {
+        path: "*",
+        element: <NotFound></NotFound>,
+      },
     ],
+    errorElement: <NotFound></NotFound>,
   },
 ]);
 
