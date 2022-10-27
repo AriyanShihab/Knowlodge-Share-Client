@@ -20,6 +20,7 @@ const AuthContext = ({ children }) => {
   // methods
   const auth = getAuth(app);
   const signUpwithEmailPassword = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -73,6 +74,7 @@ const AuthContext = ({ children }) => {
   const userMethodes = {
     user,
     loading,
+    setLoading,
     signout,
     signUpwithEmailPassword,
     updateUserProfile,
