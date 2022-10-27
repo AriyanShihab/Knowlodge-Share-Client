@@ -4,6 +4,7 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -28,6 +29,10 @@ const AuthContext = ({ children }) => {
       displayName: displayName,
       photoURL: photoUrl,
     });
+  };
+
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
   };
 
   // sign up using google
@@ -74,6 +79,7 @@ const AuthContext = ({ children }) => {
     singUpwithGooglePopup,
     signupWithGithub,
     emailPasswordLogin,
+    resetPassword,
   };
   return (
     <UserContext.Provider value={userMethodes}>{children}</UserContext.Provider>

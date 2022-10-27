@@ -5,6 +5,7 @@ import Courses from "../Components/Pages/Courses";
 import FAQ from "../Components/Pages/FAQ";
 import Login from "../Components/Pages/Login";
 import NotFound from "../Components/Pages/NotFound";
+import PasswordReset from "../Components/Pages/PasswordReset";
 import SignUp from "../Components/Pages/SignUp";
 import PrivateRoute from "./PrivateRoutes";
 
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             `https://learning-platform-server-side-ariyanshihab.vercel.app/courses/${params.id}`
           );
         },
+      },
+      {
+        path: "/password-reset",
+        element: <PasswordReset />,
       },
       {
         path: "*",

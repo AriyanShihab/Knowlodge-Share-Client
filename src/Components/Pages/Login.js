@@ -4,8 +4,12 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../Context/AuthContext";
 
 const Login = () => {
-  const { singUpwithGooglePopup, signupWithGithub, emailPasswordLogin } =
-    useContext(UserContext);
+  const {
+    singUpwithGooglePopup,
+    signupWithGithub,
+    emailPasswordLogin,
+    resetPassword,
+  } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -49,6 +53,8 @@ const Login = () => {
       });
     form.reset();
   };
+
+  const passwordReset = () => {};
 
   return (
     <div className="bg-gray-900  py-20">
@@ -124,6 +130,13 @@ const Login = () => {
             </svg>
           </button>
         </div>
+        <Link
+          to={"/password-reset"}
+          onClick={resetPassword}
+          className="text-center text-red-400 "
+        >
+          Forget password?
+        </Link>
         <p className="text-xs text-center sm:px-6 text-gray-400">
           Don't have an account?
           <Link
