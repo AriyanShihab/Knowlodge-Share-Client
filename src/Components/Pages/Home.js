@@ -7,14 +7,14 @@ import bannerGirl from "./bannerGirl.png";
 const Home = () => {
   const { user } = useContext(UserContext);
   return (
-    <div className="bg-slate-900 py-20 px-3 ">
-      <div className=" sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8  py-20 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 items-center bg-gray-900 rounded  ">
+    <div className="dark:bg-slate-900 py-20 px-3 ">
+      <div className=" sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8  py-20 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 items-center dark:bg-gray-900 bg-slate-200 rounded  ">
         <div>
-          <h1 className="font-bold text-4xl md:text-5xl my-4 text-slate-100">
+          <h1 className="font-bold text-4xl md:text-5xl my-4 dark:text-slate-100">
             Increase Your Knowledge to create a{" "}
             <span className="text-[#f66962]">better World</span>
           </h1>
-          <p className="leading-6 mb-5 text-white">
+          <p className="leading-6 mb-5 dark:text-white">
             Knowledge is power. Information is liberating. Education is the
             premise of progress, in every society, in every family.
           </p>

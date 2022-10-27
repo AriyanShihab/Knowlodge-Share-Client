@@ -2,6 +2,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import React from "react";
 import { FaRegFilePdf } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import NotFound from "./NotFound";
 import PDFFile from "./PDFFile";
 
 const CourseDetails = () => {
@@ -9,17 +10,21 @@ const CourseDetails = () => {
   const { id, name, description, rattings, student, totalHours, image } =
     course;
 
+  if (!course) {
+    return <NotFound></NotFound>;
+  }
+
   return (
-    <div className="bg-slate-900 grid items-center min-h-screen p-5">
-      <div className="md:w-3/4 mx-auto bg-slate-800 px-4 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3  mx-auto px-4 mb-10">
+    <div className="white grid items-center min-h-screen md:p-5">
+      <div className="md:w-3/4 mx-auto bg-slate-50 px-4 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-3  mx-auto md:px-4 px-2 mb-10">
           <div className="md:col-span-1">
             <img className="min-w-full rounded" src={image} alt="" />
           </div>
-          <div className="md:col-span-2 text-slate-100">
+          <div className="md:col-span-2 text-slate-900 shadow-2xl p-4">
             <h1 className="text-3xl my-3  font-bold">{name}</h1>
             <p>{description}</p>
-            <div className="flex justify-between bg-slate-700 rounded p-2 m-1 text-white">
+            <div className="flex justify-between bg-white shadow-2xl rounded p-2 m-1 text-slate-900">
               <p>sutdent: {student}</p>
               <p>ratting: {rattings}</p>
               <p>Time {totalHours} hours</p>
@@ -35,8 +40,8 @@ const CourseDetails = () => {
                     PDF is Loadeing
                   </button>
                 ) : (
-                  <button className="min-w-full bg-indigo-500 py-2 m-1 rounded font-bold text-slate-800">
-                    <FaRegFilePdf className="inline mr-2 text-xl"></FaRegFilePdf>{" "}
+                  <button className="min-w-full bg-indigo-500 py-2 m-1 rounded font-bold  text-white">
+                    <FaRegFilePdf className="inline mr-2 text-xl text-white"></FaRegFilePdf>{" "}
                     Download PDF
                   </button>
                 )

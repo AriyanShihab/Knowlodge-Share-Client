@@ -45,8 +45,9 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((err) => {
-        toast.error(err.message, { autoClose: 800 });
+        toast.error(err.message, { autoClose: 1200 });
       });
+    form.reset();
   };
 
   return (
@@ -61,13 +62,13 @@ const Login = () => {
         >
           <div className="space-y-1 text-sm">
             <label for="username" className="block text-gray-400">
-              Username
+              Email...
             </label>
             <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
             />
           </div>

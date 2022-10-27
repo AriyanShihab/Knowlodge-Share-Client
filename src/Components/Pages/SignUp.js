@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../Context/AuthContext";
 
@@ -10,6 +10,9 @@ const SignUp = () => {
     singUpwithGooglePopup,
     signupWithGithub,
   } = useContext(UserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // form submit
   const handelSubmit = (e) => {
@@ -29,6 +32,8 @@ const SignUp = () => {
         updateUserProfile(fullName, photoUrl);
         toast.success("Profile update Successfully", { autoClose: 700 });
       });
+    navigate(from, { replace: true });
+    form.reset();
   };
 
   // google popup handeler
