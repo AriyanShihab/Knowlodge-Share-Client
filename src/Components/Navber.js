@@ -3,12 +3,12 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import ReactTooltip from "react-tooltip";
-import { userContext } from "../Context/AuthContext";
+import { UserContext } from "../Context/AuthContext";
 import dummyUser from "./dummyUser.jpg";
 
 const Navber = () => {
   const [theme, setTheme] = useState(true);
-  const { signout, user } = useContext(userContext);
+  const { signout, user } = useContext(UserContext);
   const logout = () => {
     signout()
       .then(() => {

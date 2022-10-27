@@ -11,7 +11,7 @@ import {
 import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.init";
 
-export const userContext = createContext({});
+export const UserContext = createContext({});
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
@@ -76,7 +76,7 @@ const AuthContext = ({ children }) => {
     emailPasswordLogin,
   };
   return (
-    <userContext.Provider value={userMethodes}>{children}</userContext.Provider>
+    <UserContext.Provider value={userMethodes}>{children}</UserContext.Provider>
   );
 };
 

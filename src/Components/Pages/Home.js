@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../Context/AuthContext";
 import TopSelling from "../TopSelling";
 import bannerGirl from "./bannerGirl.png";
 
 const Home = () => {
+  const { user } = useContext(UserContext);
   return (
     <div className="bg-slate-900 py-20 px-3 ">
       <div className=" sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8  py-20 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 items-center bg-gray-900 rounded  ">
@@ -16,18 +18,29 @@ const Home = () => {
             Knowledge is power. Information is liberating. Education is the
             premise of progress, in every society, in every family.
           </p>
-          <Link
-            className="px-4 py-3 rounded font-bold text-slate-100 bg-[#f66962] m-1 ml-0"
-            to={"/login"}
-          >
-            Login
-          </Link>
-          <Link
-            className="px-4 py-3 rounded font-bold text-slate-100 bg-[#f66962] m-1 border border-[#f66962] hover:bg-transparent hover:text-[#f66962] transition"
-            to={"/signup"}
-          >
-            Sign up
-          </Link>
+          {!user ? (
+            <div>
+              <Link
+                className="px-4 py-3 rounded font-bold text-slate-100 bg-[#f66962] m-1 ml-0"
+                to={"/login"}
+              >
+                Login
+              </Link>
+              <Link
+                className="px-4 py-3 rounded font-bold text-slate-100 bg-[#f66962] m-1 border border-[#f66962] hover:bg-transparent hover:text-[#f66962] transition"
+                to={"/signup"}
+              >
+                Sign up
+              </Link>
+            </div>
+          ) : (
+            <Link
+              className="px-4 py-3 rounded font-bold text-slate-100 bg-[#f66962] mt-3 border border-[#f66962] hover:bg-transparent hover:text-[#f66962] transition"
+              to={"/courses"}
+            >
+              Explore Courses
+            </Link>
+          )}
         </div>
         <img
           className="md:max-w-[70%] md:ml-auto mt-10 md:mt-0"

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { userContext } from "../../Context/AuthContext";
+import { UserContext } from "../../Context/AuthContext";
 
 const SignUp = () => {
   const {
@@ -9,7 +9,7 @@ const SignUp = () => {
     updateUserProfile,
     singUpwithGooglePopup,
     signupWithGithub,
-  } = useContext(userContext);
+  } = useContext(UserContext);
 
   // form submit
   const handelSubmit = (e) => {

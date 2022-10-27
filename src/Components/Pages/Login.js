@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { userContext } from "../../Context/AuthContext";
+import { UserContext } from "../../Context/AuthContext";
 
 const Login = () => {
   const { singUpwithGooglePopup, signupWithGithub, emailPasswordLogin } =
-    useContext(userContext);
+    useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
